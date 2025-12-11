@@ -110,7 +110,7 @@ bot.command("buy", (ctx) => {
   const text = ctx.message.text.split(" ");
   const item = text[1];
 
-  if (!item || !items[item]) return ctx.reply("❌ Item မရှိပါ။ item အမည်ထည့်ပေးရမည်။ မသိပါက 👉🏼 /items ကိုကြည့်ပါ။");
+  if (!item || !items[item]) return ctx.reply("❌ Item မရှိပါ။\n item အမည်ထည့်ပေးရမည်။ \nitem အမည်မသိပါက 👉🏼 /items ကိုကြည့်ပါ။");
 
   const cost = items[item];
 
