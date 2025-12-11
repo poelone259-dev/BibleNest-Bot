@@ -99,7 +99,7 @@ bot.command("points", (ctx) => {
 
 // /items
 bot.command("items", (ctx) => {
-  ctx.reply("📦 လဲလှယ်နိုင်သော Items\n\nph_1000 = 1000 points\nph_3000 = 3000 points\nph_5000 = 5000 points");
+  ctx.reply("📦 လဲလှယ်နိုင်သော Items\n\nph_1000 = 1000 points\nph_3000 = 3000 points\nph_5000 = 5000 points\n\nဝယ်ယူနည်း - (ဥပမာ- /buy ph_1000) လိုရေးပေးပါ ");
 });
 
 // /buy <item>
@@ -176,15 +176,20 @@ bot.command("role", (ctx) => {
 // /rolerules
 bot.command("rolerules", (ctx) => {
   ctx.reply(
-    `Role Rules and Rewards:\n
-💎 Diamond: 3000 points
-🏆 Platinum: 2000 points
-🥇 Gold: 1500 points
-🥈 Silver: 1000 points
-🥉 Bronze: 500 points
-👤 New Member: 0 points`
+`Role Rules and Rewards:
+
+💎 Diamond: 3000 points | Weekly gift 300 points
+🏆 Platinum: 2000 points | Weekly gift 200 points
+🥇 Gold: 1500 points | Weekly gift 150 points
+🥈 Silver: 1000 points | Weekly gift 100 points
+🥉 Bronze: 500 points | Weekly gift 50 points
+👤 New Member: 0 points
+
+You can buy the Points you have earned with the command /buy <item_name>.
+To see the items that have been gifted, use the command /items.`
   );
 });
+
 
 // ===============================
 // ADMIN COMMANDS
