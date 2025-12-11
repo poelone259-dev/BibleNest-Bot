@@ -54,14 +54,15 @@ bot.start((ctx) => {
 bot.command("help", (ctx) => {
   ctx.reply(
     "📌 BibleNest Commands\n" +
-    "/work - Point များကိုစုရန်\n" +
-    "/points - မိမိ Point စစ်မယ်\n" +
-    "/items - လဲလှယ်နိုင်သော Items\n" +
-    "/buy <item_name> - Itemလဲမယ်\n" +
-    "/dailyverse - ယနေ့ကျမ်းချက်\n" +
+    "/work - Point များကို စုရန်\n" +
+    "/points - မိမိ Point စစ်ရန်\n" +
+    "/items - လဲလှယ်နိုင်သော Items ကြည့်ရန်\n" +
+    "/buy <item_name> - Item ဝယ်ယူ/လဲလှယ်ရန်\n" +
+    "/dailyverse - ယနေ့ ကျမ်းချက်\n" +
     "/devotional - ယနေ့ Devotional\n" +
-    "/role - ကိုယ်ရထားသော Role ကြည့်ရန်\n" +  
-    "/rolerules - Role System Rules"
+    "/role - ကိုယ်ရရှိထားသော Role ကြည့်ရန်\n" +
+    "/rolerules - Role System Rules ကြည့်ရန်\n" +
+    "/admin - Admin ကိုတိုက်ရိုက် ဆက်သွယ်ရန်\n"
   );
 });
 
@@ -110,7 +111,7 @@ bot.command("buy", (ctx) => {
   const text = ctx.message.text.split(" ");
   const item = text[1];
 
-  if (!item || !items[item]) return ctx.reply("❌ Item မရှိပါ။\n item အမည်ထည့်ပေးရမည်။ \nitem အမည်မသိပါက 👉🏼 /items ကိုကြည့်ပါ။");
+  if (!item || !items[item]) return ctx.reply("❌ Item မရှိပါ။\n item အမည်ထည့်ပေးရမည်။\nitem အမည်မသိပါက 👉🏼 /items ကိုကြည့်ပါ။");
 
   const cost = items[item];
 
@@ -187,6 +188,16 @@ bot.command("rolerules", (ctx) => {
 
 You can buy the Points you have earned with the command /buy <item_name>.
 To see the items that have been gifted, use the command /items.`
+  );
+});
+
+// /admin command
+bot.command("admin", (ctx) => {
+  ctx.reply(
+    "📞 Need help? You can contact the admin directly here:\n\n👉 @poe_91",
+    {
+      disable_web_page_preview: true
+    }
   );
 });
 
