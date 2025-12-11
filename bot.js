@@ -1,11 +1,18 @@
 const { Telegraf } = require("telegraf");
 const fs = require("fs");
 
-const config = require("./config.json");
-const bot = new Telegraf(config.BOT_TOKEN);
+// 🔥 ENV Variable မှ Bot Token ကို ယူသည်
+const bot = new Telegraf(process.env.BOT_TOKEN);
 
+// 🔥 Admin IDs (optional)
+const ADMIN_IDS = process.env.ADMIN_IDS
+  ? process.env.ADMIN_IDS.split(",").map(id => id.trim())
+  : [];
+
+// Existing data files
 const users = require("./data/users.json");
 const items = require("./data/items.json");
+
 
 const POINT_REWARDS = [1,2,3,4,5,6,7,8,9,10,20,30,40,50];
 const DAILY_LIMIT = {}; // To prevent 2 times per day for verse/devotional
