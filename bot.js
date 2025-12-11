@@ -99,7 +99,7 @@ bot.command("points", (ctx) => {
 
 // /items
 bot.command("items", (ctx) => {
-  ctx.reply("📦 လဲလှယ်နိုင်သော Items\n\nph_1000 = 1000 points\nph_3000 = 3000 points\nph_5000 = 5000 points\n\nဝယ်ယူနည်း - (ဥပမာ- /buy ph_1000) လိုရေးပေးပါ ");
+  ctx.reply("📦 လဲလှယ်နိုင်သော Items\n\nph_1000 = 1000 points\nph_3000 = 3000 points\nph_5000 = 5000 points\n\n🛒 ဝယ်ယူနည်း - (ဥပမာ- /buy ph_1000) လိုရေးပေးပါ ");
 });
 
 // /buy <item>
@@ -110,11 +110,11 @@ bot.command("buy", (ctx) => {
   const text = ctx.message.text.split(" ");
   const item = text[1];
 
-  if (!item || !items[item]) return ctx.reply("❌ Item မရှိပါ။ /items ကိုကြည့်ပါ။");
+  if (!item || !items[item]) return ctx.reply("❌ Item မရှိပါ။ item အမည်ထည့်ပေးရမည်။ မသိပါက 👉🏼 /items ကိုကြည့်ပါ။");
 
   const cost = items[item];
 
-  if (users[id].points < cost) return ctx.reply("❌ Point မလုံလောက်ပါ!");
+  if (users[id].points < cost) return ctx.reply("❌ Point မလုံလောက်ပါ!\n\n 🪙 ၃ နာရီတစ်ကြိမ် /points စုဆောင်းနိုင်ပါသည်။");
 
   users[id].points -= cost;
   users[id].redeemed.push(item);
@@ -128,7 +128,7 @@ bot.command("buy", (ctx) => {
     );
   });
 
-  ctx.reply(`🎉 သင် ${item} လဲလှယ်ပြီးပါပြီ!\nAdmin မှ သင့်ထံ ဆက်သွယ်ပေးမည်`);
+  ctx.reply(`🎉 သင် ${item} လဲလှယ်ပြီးပါပြီ!\n သင်ရရှိသော Phone Bill ကို ပေးရန်အတွက်\nAdmin မှ သင့်ထံ ဆက်သွယ်ပေးမည်`);
 });
 
 // /dailyverse
