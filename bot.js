@@ -1,11 +1,9 @@
 const { Telegraf } = require("telegraf");
 const fs = require("fs");
 
-require("dotenv").config();
-const { Telegraf } = require("telegraf");
-
+require('dotenv').config();
 const BOT_TOKEN = process.env.BOT_TOKEN;
-const ADMIN_IDS = process.env.ADMIN_IDS ? process.env.ADMIN_IDS.split(",") : [];
+const ADMIN_IDS = process.env.ADMIN_IDS ? process.env.ADMIN_IDS.split(',') : [];
 
 const bot = new Telegraf(BOT_TOKEN);
 
