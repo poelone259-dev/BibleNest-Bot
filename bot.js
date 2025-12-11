@@ -47,7 +47,7 @@ bot.start((ctx) => {
     saveUsers();
   }
 
-  ctx.reply("BibleNest မှ ကြိုဆိုပါ၏🙏\n/help ကိုနှိပ်ပြီး အသုံးပြုနည်းကြည့်ပါ။");
+  ctx.reply("BibleNest မှ ကြိုဆိုပါ၏🎉\n/help ကိုနှိပ်ပြီး အသုံးပြုနည်းကြည့်ပါ။");
 });
 
 // /help (USER ONLY)
@@ -100,8 +100,15 @@ bot.command("points", (ctx) => {
 
 // /items
 bot.command("items", (ctx) => {
-  ctx.reply("📦 လဲလှယ်နိုင်သော Items\n\nph_1000 = 1000 points\nph_3000 = 3000 points\nph_5000 = 5000 points\n\n🛒 ဝယ်ယူနည်း - (ဥပမာ- /buy ph_1000) လိုရေးပေးပါ ");
+  let message = "🎁 Available Items:\n\n";
+  
+  for (let key in items) {
+    message += `• ${key} - ${items[key].price} points | ${items[key].description}\n\n🛒 ဝယ်ယူနည်း - (ဥပမာ- /buy ph_1000) လိုရေးပေးပါ`;
+  }
+
+  ctx.reply(message);
 });
+
 
 // /buy <item>
 bot.command("buy", (ctx) => {
