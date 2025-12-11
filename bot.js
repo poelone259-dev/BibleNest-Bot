@@ -103,8 +103,9 @@ bot.command("items", (ctx) => {
   let message = "🎁 Available Items:\n\n";
   
   for (let key in items) {
-    message += `• ${key} - ${items[key].price} points | ${items[key].description}\n\n🛒 ဝယ်ယူနည်း - (ဥပမာ- /buy ph_1000) လိုရေးပေးပါ`;
+    message += `• ${key} - ${items[key].price} points | ${items[key].description}\n`;
   }
+  message += `\n 🛒 ဝယ်ယူနည်း: /buy <item_name>\n 👉🏼 ဥပမာ: /buy ph_wallpaper`;
 
   ctx.reply(message);
 });
