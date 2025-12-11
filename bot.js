@@ -1,8 +1,13 @@
 const { Telegraf } = require("telegraf");
 const fs = require("fs");
 
-const config = require("./config.json");
-const bot = new Telegraf(config.BOT_TOKEN);
+require("dotenv").config();
+const { Telegraf } = require("telegraf");
+
+const BOT_TOKEN = process.env.BOT_TOKEN;
+const ADMIN_IDS = process.env.ADMIN_IDS ? process.env.ADMIN_IDS.split(",") : [];
+
+const bot = new Telegraf(BOT_TOKEN);
 
 const users = require("./data/users.json");
 const items = require("./data/items.json");
@@ -131,7 +136,7 @@ bot.command("dailyverse", (ctx) => {
   const today = new Date().toISOString().slice(0, 10);
 
   if (last === today) {
-    return ctx.reply("⚠️ You have already received today's Daily Verse.");
+    return ctx.reply("⚠️ ယနေ့အတွက် နေ့စဉ်ကျမ်းပိုဒ်ကို သင်ရရှိ ပြီးပါပြီ။ နောက်နေ့ မနက်မှာ ပြန်လည်ရယူလိုက်ပါ။");
   }
 
   const verse = getDailyVerse(); // random verse from verses.json
