@@ -138,7 +138,7 @@ bot.command("dailyverse", (ctx) => {
   const today = new Date().toISOString().slice(0, 10);
 
   if (last === today) {
-    return ctx.reply("⚠️ ယနေ့အတွက် နေ့စဉ်ကျမ်းပိုဒ်ကို သင်ရရှိ ပြီးပါပြီ။ နောက်နေ့ မနက်မှာ ပြန်လည်ရယူလိုက်ပါ။ ");
+    return ctx.reply("⚠️ ယနေ့အတွက် နေ့စဉ်ကျမ်းပိုဒ်ကို သင်ရရှိ ပြီးပါပြီ။ နောက်နေ့ မနက်မှာ ပြန်လည်ရယူလိုက်ပါ။");
   }
 
   const verse = getDailyVerse(); // random verse from verses.json
