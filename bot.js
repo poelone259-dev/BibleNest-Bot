@@ -252,24 +252,27 @@ bot.command("removepoints", (ctx) => {
   ctx.reply("DONE ✔️");
 });
 
+// start bot
+bot.launch();
+
 // /users (ADMIN ONLY)
 bot.command("users", (ctx) => {
   const adminId = ctx.from.id;
 
-  // Only admins can use
   if (!config.ADMIN_IDS.includes(adminId)) {
     return ctx.reply("❌ This command is for admins only!");
   }
 
   let message = "📋 *BibleNest User List*\n\n";
 
-  for (let uid in users) {
+  for (const uid in users) {
     const user = users[uid];
+
     message += 
-      `👤 Name: ${user.name}\n` +
-      `🆔 ID: ${user.id}\n` +
-      `🪙 Points: ${user.points}\n` +
-      `🎁 Redeemed: ${user.redeemed.join(", ") || "None"}\n\n`;
+      `👤 *Name:* ${user.name}\n` +
+      `🆔 *ID:* ${user.id}\n` +
+      `🪙 *Points:* ${user.points}\n` +
+      `🎁 *Redeemed:* ${user.redeemed.length ? user.redeemed.join(", ") : "None"}\n\n`;
   }
 
   ctx.reply(message, { parse_mode: "Markdown" });
