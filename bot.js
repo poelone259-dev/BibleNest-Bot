@@ -110,7 +110,6 @@ bot.command("items", (ctx) => {
   ctx.reply(message);
 });
 
-
 // /buy <item>
 bot.command("buy", (ctx) => {
   const id = ctx.from.id;
