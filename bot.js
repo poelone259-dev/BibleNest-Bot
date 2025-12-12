@@ -117,53 +117,34 @@ bot.command("buy", (ctx) => {
   if (!users[id]) return ctx.reply("Please /start first!");
 
   const text = ctx.message.text.split(" ");
-  const item = text[1];
+  const item = text[1]?.trim(); // spacing fix
 
-  // Item exist check
+  // check valid item
   if (!item || !items[item]) {
-    return ctx.reply(
-      "❌ Item မရှိပါ။\n" +
-      "item အမည်ထည့်ပေးရမည်။\n" +
-      "item အမည်မသိပါက 👉🏼 /items ကိုကြည့်ပါ။"
-    );
+    return ctx.reply("❌ Item မရှိပါ။\nitem အမည်ထည့်ပေးရမည်။\nitem အမည်မသိပါက 👉 /items ကိုကြည့်ပါ။");
   }
 
-  const cost = items[item].price; // ✅ FIXED (price only)
+  const cost = items[item].price; // FIX: use price only!
 
-  // Enough points?
+  // point check
   if (users[id].points < cost) {
-    return ctx.reply(
-      "❌ Point မလုံလောက်ပါ!\n\n" +
-      "🪙 ၃ နာရီတစ်ကြိမ် /work ဖြင့် point စုနိုင်ပါသည်။"
-    );
+    return ctx.reply("❌ Point မလုံလောက်ပါ!\n\n🪙 ၃ နာရီတစ်ကြိမ် /points စုဆောင်းနိုင်ပါတယ်။");
   }
 
-  // Deduct points & save redeemed item
+  // deduct points
   users[id].points -= cost;
   users[id].redeemed.push(item);
   saveUsers();
 
-  // Notify Admins
-  config.ADMIN_IDS.forEach((adminId) => {
+  // Notify Admin
+  config.ADMIN_IDS.forEach(adminId => {
     bot.telegram.sendMessage(
       adminId,
-      `🔔 *User Redeemed Item*\n\n` +
-      `👤 Name: ${users[id].name}\n` +
-      `🆔 ID: ${id}\n` +
-      `🎁 Item: ${item}\n` +
-      `💰 Cost: ${cost} points`,
-      { parse_mode: "Markdown" }
+      `🔔 User Redeemed\nName: ${users[id].name}\nID: ${id}\nItem: ${item}`
     );
   });
 
-  // Reply to user
-  ctx.reply(
-    `🎉 **ဝယ်ယူပြီးပါပြီ!**\n\n` +
-    `📦 Item: *${item}*\n` +
-    `💰 Cost: *${cost} points*\n\n` +
-    `📩 သင်ဝယ်ယူသော item ကိုပေးရန်\nAdmin မှ သင့်ထံ ဆက်သွယ်ပေးမည်။`,
-    { parse_mode: "Markdown" }
-  );
+  ctx.reply(`🎉 သင် ${item} ကို လဲလှယ်ပြီးပါပြီ!\n📱 Phone Bill လျော်ကြေးပေးရန်\nAdmin မှ အကြောင်းကြားပေးမည်`);
 });
 
 // /dailyverse
