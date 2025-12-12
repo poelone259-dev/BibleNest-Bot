@@ -252,32 +252,29 @@ bot.command("removepoints", (ctx) => {
   ctx.reply("DONE ✔️");
 });
 
-// start bot
-bot.launch();
+// /userlist
+bot.command("userlist", (ctx) => {
+  if (!isAdmin(ctx.from.id)) return;
 
-// /users (ADMIN ONLY)
-bot.command("users", (ctx) => {
-  const adminId = ctx.from.id;
+  const list = Object.values(users)
+    .map(u => `${u.id} - ${u.name}`)
+    .join("\n");
 
-  if (!config.ADMIN_IDS.includes(adminId)) {
-    return ctx.reply("❌ This command is for admins only!");
-  }
-
-  let message = "📋 *BibleNest User List*\n\n";
-
-  for (const uid in users) {
-    const user = users[uid];
-
-    message += 
-      `👤 *Name:* ${user.name}\n` +
-      `🆔 *ID:* ${user.id}\n` +
-      `🪙 *Points:* ${user.points}\n` +
-      `🎁 *Redeemed:* ${user.redeemed.length ? user.redeemed.join(", ") : "None"}\n\n`;
-  }
-
-  ctx.reply(message, { parse_mode: "Markdown" });
+  ctx.reply("👥 Users:\n\n" + list);
 });
 
+// /redeemlist
+bot.command("redeemlist", (ctx) => {
+  if (!isAdmin(ctx.from.id)) return;
+
+  let text = "🎁 Redeemed Items:\n\n";
+  Object.values(users).forEach(u => {
+    if (u.redeemed.length > 0)
+      text += `${u.name}(${u.id}) = ${u.redeemed.join(", ")}\n`;
+  });
+
+  ctx.reply(text);
+});
 
 // start bot
 bot.launch();
