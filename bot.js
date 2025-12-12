@@ -105,7 +105,7 @@ bot.command("items", (ctx) => {
   for (let key in items) {
     message += `• ${key} - ${items[key].price} points | ${items[key].description}\n`;
   }
-  message += `\n 🛒 ဝယ်ယူနည်း: /buy <item_name>\n 👉🏼 ဥပမာ: /buy ph_wallpaper 👈🏼 လို့ရေးပါ`;
+  message += `\n 🛒 ဝယ်ယူနည်း: /buy <item_name>\n 👉🏼 ဥပမာ: /buy ph_1000 👈🏼 လို့ရေးပါ`;
 
   ctx.reply(message);
 });

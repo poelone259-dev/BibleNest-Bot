@@ -1,18 +1,17 @@
 {
-  "ph_1000":{
+  
+  "ph_1000": {
     "price": 1000,
     "description": "Phone Bill 1000 gift"
   },
-  "ph_3000":{
+  "ph_3000": {
     "price": 3000,
     "description": "Phone Bill 3000 gift"
   },
-  "ph_5000":{
+  "ph_5000": {
     "price": 5000,
     "description": "Phone Bill 5000 gift"
-  },
-  "ph_wallpaper": {
-  "price": 1500,
-  "description": "Phone Wallpaper Gift"
-}
+  }
+
+
 }
